@@ -1,11 +1,33 @@
+body {
+  background: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+#text {
+  padding: 20px;
+  font-size: 16px;
+}
+
 #final {
+  font-size: 32px;
   writing-mode: vertical-rl;
-  font-size: 48px;
-  color: red;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: shake 0.05s infinite;
-  z-index: 9999; /* ← これ超重要 */
+  text-orientation: upright;
+}
+
+.shake {
+  animation: shake 0.1s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(5px, -5px); }
+  50% { transform: translate(-5px, 5px); }
+  75% { transform: translate(5px, 5px); }
+  100% { transform: translate(-5px, -5px); }
 }
