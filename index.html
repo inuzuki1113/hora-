@@ -2,123 +2,20 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <title>ゲーム攻略サイト</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゲーム攻略板</title>
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #000000;
-      font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
-      transition: background-color 0.05s, color 0.05s;
-    }
-
-    .container {
-      padding: 24px;
-      font-size: clamp(18px, 5vw, 26px);
-      line-height: 1.8;
-      word-break: break-all;
-      white-space: pre-wrap;
-    }
-
-    /* 初回のみのカラフル点滅 */
-    .flicker {
-      animation: flash 0.05s infinite;
-    }
-
-    @keyframes flash {
-      0%   { background-color: red; color: cyan; }
-      20%  { background-color: yellow; color: purple; }
-      40%  { background-color: blue; color: lime; }
-      60%  { background-color: magenta; color: black; }
-      80%  { background-color: cyan; color: red; }
-      100% { background-color: white; color: black; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <div class="container" id="text">
-    このサイトでは色々なゲームの攻略法を書いております。
+  <div id="text">
+    このサイトでは色々なゲームの攻略法を書いております。<br>
     協力してくれる方は一番下のリンクから飛んでください。
   </div>
 
-  <script>
-    const textElement = document.getElementById("text");
+  <div id="final" class="hidden">
+    二度とここに来るな
+  </div>
 
-    const normalText =
-      "このサイトでは色々なゲームの攻略法を書いております。\n" +
-      "協力してくれる方は一番下のリンクから飛んでください。";
-
-    const redText =
-      "助けて助けて助けて助けて助けて助けて助けて\n" +
-      "やめてやめてやめてやめてやめて";
-
-    const chars =
-      "あいうえおかきくけこさしすせそたちつてとなにぬねのまみむめもやゆよらりるれろわをん" +
-      "アイウエオカキクケコサシスセソタチツテトナニヌネノ" +
-      "日月火水木金土心闇影声夢虚死";
-
-    const horrorTitles = [
-      "助けて",
-      "見られている",
-      "もう逃げ場はない。"
-    ];
-
-    function randomString(length) {
-      let result = "";
-      for (let i = 0; i < length; i++) {
-        result += chars[Math.floor(Math.random() * chars.length)];
-      }
-      return result;
-    }
-
-    // ===== 初回演出 =====
-    setTimeout(() => {
-      document.body.classList.add("flicker");
-
-      setTimeout(() => {
-        document.body.classList.remove("flicker");
-        document.body.style.backgroundColor = "#000";
-
-        let isRed = false;
-
-        /* 文字色切り替え（0.2秒） */
-        setInterval(() => {
-          isRed = !isRed;
-          if (isRed) {
-            textElement.style.color = "#ff0000";
-            textElement.textContent = redText;
-          } else {
-            textElement.style.color = "#ffffff";
-            textElement.textContent = normalText;
-          }
-        }, 200);
-
-        /* タブ名制御（ホラー時5秒ロック） */
-        let titleLocked = false;
-
-        setInterval(() => {
-          if (titleLocked) return;
-
-          if (Math.random() < 0.15) {
-            document.title =
-              horrorTitles[Math.floor(Math.random() * horrorTitles.length)];
-
-            titleLocked = true;
-            setTimeout(() => {
-              titleLocked = false;
-            }, 5000);
-          } else {
-            document.title = randomString(8);
-          }
-        }, 150);
-
-      }, 3000);
-    }, 10000);
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
