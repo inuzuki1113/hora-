@@ -1,12 +1,10 @@
 body {
+  margin: 0;
   background: black;
   color: white;
-  margin: 0;
-  padding: 0;
-}
-
-.hidden {
-  display: none;
+  font-family: sans-serif;
+  text-align: center;
+  overflow: hidden;
 }
 
 #text {
@@ -14,20 +12,25 @@ body {
   font-size: 16px;
 }
 
-#final {
-  font-size: 32px;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+.hidden {
+  display: none;
 }
 
-.shake {
-  animation: shake 0.1s infinite;
+#final {
+  writing-mode: vertical-rl;
+  font-size: 48px;
+  color: red;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: shake 0.05s infinite;
 }
 
 @keyframes shake {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(5px, -5px); }
-  50% { transform: translate(-5px, 5px); }
-  75% { transform: translate(5px, 5px); }
-  100% { transform: translate(-5px, -5px); }
+  0%   { transform: translate(-50%, -50%) translate(0,0); }
+  25%  { transform: translate(-50%, -50%) translate(-20px,20px); }
+  50%  { transform: translate(-50%, -50%) translate(20px,-20px); }
+  75%  { transform: translate(-50%, -50%) translate(-20px,-20px); }
+  100% { transform: translate(-50%, -50%) translate(20px,20px); }
 }
