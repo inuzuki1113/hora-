@@ -1,5 +1,6 @@
-/* Google Fontsからホラー向きのフォントを読み込み */
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap');
+/* 怨念がこもったような掠れフォント「Zen Dots」と「Shippori Mincho」を混合 */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
 
 body {
   margin: 0;
@@ -20,29 +21,37 @@ body {
 }
 
 #final {
-  /* ここにホラー用フォントを適用 */
-  font-family: 'Kaisei Tokumin', serif;
+  /* 掠れた手書き風フォントを適用 */
+  font-family: 'New Tegomin', serif;
   
   writing-mode: vertical-rl;
-  font-size: 64px; /* 少し大きくしました */
-  color: #ff0000;
+  font-size: 80px; /* 威圧感を出すために巨大化 */
+  color: #8a0000; /* 鮮やかな赤ではなく、乾いた血のような暗い赤 */
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: shake 0.05s infinite;
   
-  /* 文字に不気味な影を追加 */
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 4px 4px 5px #000;
-  /* わずかに文字を歪ませて恐怖感を演出 */
-  letter-spacing: 0.2em;
-  filter: contrast(150%) blur(0.5px);
+  /* 激しい揺れと、文字が歪むアニメーションを統合 */
+  animation: nightmare 0.04s infinite;
+  
+  /* 血が滴り、滲んでいるようなドロップシャドウ */
+  text-shadow: 
+    0 0 10px #f00,
+    3px 15px 10px #000,
+    -3px -5px 2px rgba(255,255,255,0.2); /* わずかな光の反射が逆に不気味 */
+  
+  letter-spacing: -0.1em; /* 文字を詰めさせて窮屈で苦しい感じに */
+  filter: contrast(200%) blur(1px); /* コントラストを上げ、少しぼかして正体不明に */
+  opacity: 0.9;
 }
 
-@keyframes shake {
-  0%   { transform: translate(-50%, -50%) translate(0,0); }
-  25%  { transform: translate(-50%, -50%) translate(-20px,20px); }
-  50%  { transform: translate(-50%, -50%) translate(20px,-20px); }
-  75%  { transform: translate(-50%, -50%) translate(-20px,-20px); }
-  100% { transform: translate(-50%, -50%) translate(20px,20px); }
+/* 激しい振動 + 拡大縮小で「叫び」を表現 */
+@keyframes nightmare {
+  0%   { transform: translate(-50%, -50%) translate(0, 0) scale(1); }
+  20%  { transform: translate(-50%, -50%) translate(-15px, 10px) scale(1.05); }
+  40%  { transform: translate(-50%, -50%) translate(15px, -15px) scale(0.95); }
+  60%  { transform: translate(-50%, -50%) translate(-20px, -5px) scale(1.1); filter: hue-rotate(10deg); }
+  80%  { transform: translate(-50%, -50%) translate(20px, 15px) scale(0.9); }
+  100% { transform: translate(-50%, -50%) translate(0, 0) scale(1); }
 }
