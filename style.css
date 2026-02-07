@@ -1,3 +1,6 @@
+/* Google Fontsからホラー向きのフォントを読み込み */
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap');
+
 body {
   margin: 0;
   background: black;
@@ -17,14 +20,23 @@ body {
 }
 
 #final {
+  /* ここにホラー用フォントを適用 */
+  font-family: 'Kaisei Tokumin', serif;
+  
   writing-mode: vertical-rl;
-  font-size: 48px;
-  color: red;
+  font-size: 64px; /* 少し大きくしました */
+  color: #ff0000;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   animation: shake 0.05s infinite;
+  
+  /* 文字に不気味な影を追加 */
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 4px 4px 5px #000;
+  /* わずかに文字を歪ませて恐怖感を演出 */
+  letter-spacing: 0.2em;
+  filter: contrast(150%) blur(0.5px);
 }
 
 @keyframes shake {
